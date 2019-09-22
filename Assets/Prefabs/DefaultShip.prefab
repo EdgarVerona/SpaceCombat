@@ -4918,7 +4918,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2683132591425665722}
   - component: {fileID: 2683132591425665720}
-  - component: {fileID: 2683132591425665721}
   - component: {fileID: 2683132591425665726}
   m_Layer: 0
   m_Name: DefaultShip
@@ -4963,22 +4962,6 @@ MonoBehaviour:
   TurnRate: 5
   PitchRate: 45
   TwistRate: 150
-  WeaponDelayRateInSeconds: 0.5
---- !u!114 &2683132591425665721
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2683132591425665727}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d13030531bd24f49af3d8a2b5dd57c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  RigidBodyToControl: {fileID: 2683132591425665726}
-  ControlMapping: {fileID: 0}
-  ShipStats: {fileID: 2683132591425665720}
 --- !u!54 &2683132591425665726
 Rigidbody:
   m_ObjectHideFlags: 0

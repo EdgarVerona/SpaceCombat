@@ -191,7 +191,7 @@ PrefabInstance:
         type: 3}
       propertyPath: ControlMapping
       value: 
-      objectReference: {fileID: 274831163}
+      objectReference: {fileID: 0}
     - target: {fileID: 2683132591425665726, guid: ebf36fef026f42a4695c270aa48e5211,
         type: 3}
       propertyPath: m_IsKinematic
@@ -214,12 +214,38 @@ MonoBehaviour:
   m_GameObject: {fileID: 274831162}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52ea09311d37323499b71b8594a0eb07, type: 3}
+  m_Script: {fileID: 11500000, guid: 2f4890be54590894aa13823dfc21de17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MinimumAttackAngle: 5.02
+  DegreesTurnPerSecond: 25
+--- !u!114 &274831164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 274831162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 072a239b9203e1c4ba11ad13ed4dc69b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MinimumAttackAngle: 2
   MinimumDistanceToAttack: 200
-  DegreesTurnPerSecond: 19.79
+--- !u!114 &274831166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 274831162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35e38c46203585e459c8e63c5ca1e465, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TargetObject: {fileID: 1093656826}
+  ShowDebug: 0
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -293,7 +319,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 4e-45}
+  m_BoundingSphereOverride: {x: -0.03515625, y: 0, z: 8, w: 8}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -437,6 +463,18 @@ MonoBehaviour:
   Down: 115
   TwistLeft: 113
   TwistRight: 101
+--- !u!114 &1093656828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1093656826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d13030531bd24f49af3d8a2b5dd57c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1093656831 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2683132591425665722, guid: ebf36fef026f42a4695c270aa48e5211,
