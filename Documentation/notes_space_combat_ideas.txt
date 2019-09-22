@@ -1,0 +1,193 @@
+*** Roguelike Space Combat ***
+
+* V1 Basic playable Prototype and Learning
+	X Player controls, free movement
+		X Turning on all axis
+		X Speed control
+		X Rotation?
+	X Player shooting, lasers
+		X Rules that would make this easier:
+			1) Items are responsible for disposing of themselves, or returning themselves
+			to a pool if they think they belong there
+			2) It is okay for a object to know that it ought to be pooled
+		X Pooling issues
+			- Having to keep the Prefab everywhere
+				- Particularly annoying when disposing, instance would need a reference to its prefab.  Could we refer to them by something else?
+	- Static Enemy, gun platform
+		- LEARN: Any Unity AI built-in systems
+		- LEARN: Pivoting sub-components, restricting pivot based on geometry
+	- Static Enemy, starbase
+		- LEARN: Driving multiple gun platforms on a single parent entity
+			- Or perhaps let them remain independent?
+	- Enemy, first pass prototype starfighter
+		- LEARN: Unity AI Pathfinding, constraining to the way that actual starfighters can turn and shoot?
+		- LEARN: What kind of strategies can we add to these starfighters?
+	- Obstacle, asteroid
+	- Hitpoints and destruction
+	- Demo level, with examples of all of the above
+	
+* Basic scene creation ideas
+	- Canyon scene generation
+		- LEARN: Learn about dynamic terrain generation
+		- LEARN: Learn about how to make efficient landscape that looks and loads well
+	- Space scene generation
+		- LEARN: Nebula effects
+		- LEARN: Dynamic object generation (for capital ship wreckage)
+			- Or other alternative?
+		- Options:
+			- Nebula
+			- Capital Ship Wreckage
+			- Asteroid Field
+	
+* NPC Initial Implementation
+	- Enemy, more intelligent starfighter
+	- Neutral/Enemy/Ally, Cargo Ship
+	- Enemy, prototype capital ship
+	- Faction system
+		- Build out ability for players and enemies to be grouped into factions
+		- Factions can be allies/enemies/neutral to each other
+	- NPC Objective system
+		- Units can be given objectives, such as 
+			- Attack nearest enemy, unfocused
+			- Attack nearest enemy, focus on first visible
+			- Attack nearest enemy, focus on untargeted enemy
+			- Distract nearest enemy
+			- Attack specific target
+			- Attack specific type of unit
+			- Attack specific faction
+			- Defend area
+			- Escort target/type of unit
+			- ??? Consider other options
+			- Follow set waypoint(s)
+				- Both ignoring enemies and engaging enemies on the way
+			
+	
+* Controls and UI Polish
+	- Improve controls
+		- Turning/twisting that is "looser" (camera doesn't turn/twist at same rate as ship?)
+	- Fixing controls
+		- Determine ideal control scheme
+		- Throttle vs. press to move forward/backward?
+		- Acceleration vs. velocity?
+		- Time to transition between up/down, twist
+	- Determine and refine initial Views
+		- 3rd person view
+			- HUD
+			- Targeting reticle
+			- Basic damage
+
+* Replaceable parts and Energy
+	- Create a system for mount points
+	- Add mount points to ship
+	- Add a few example parts and their functionality
+	- Should hard points be restricted to specific types?
+	- Add and design systems to control activation of mounted devices
+		- Link firing?
+		- Fire per type?
+		- Fire per slot?
+		- Some sort of system to customize fire groups?
+	- Design a concept of balancing the components on a ship based on energy usage
+		- One idea: components cost energy, using too many systems can drain your energy and cause you to not be able to use them
+			- Similar to X-Wing
+		- Another idea: Just balance through reload/activation time, and a fixed cost for components and upgrades on components that has some upper limit (only 10 points per ship etc)
+		- Design UI as well: how to convey this energy to the user?
+	- Determine if components should take time to be installed/uninstalled
+	- UI: See installed hard points/systems
+	- UI/HUD/Action: Set fire type and/or groups, activate them
+	- UI: Install/uninstall hard points
+		
+* Shields
+	- Determine from a design perspective how shields should work.  Should all ships have them and you choose how much to power them?  Should you have to use hard point slots if you want them?  How should they work (directional, overall w/recharging damage threshold, other)
+	- Have some types of shields be more effective/at all effective vs. some weapon types?
+	- FX: Add shield FX on weapon impact
+
+* Per-part damage and destruction
+	- Add a concept of parts of a ship taking individual damage
+	- Add damage thresholds for parts to be disabled
+	- Add damage thresholds for parts to be destroyed
+	- Add damage and destroyed FX/splitting of part in game
+	- UI screen/HUD element for system part damage/destruction
+	
+* Action: Repairs
+	- Determine how repairs should work.  Should you be allowed to repair?  Divert other systems for it?  Take up hard point slots to increase repair rate?
+	- UI: Create a UI or some sort of interface to let users quickly set repair priority and see system damage status
+	
+* Mini-map
+	- LEARN: How to create an efficient mini-map
+	- DESIGN: Think/research how a mini-map should work in a free 3d environment
+	
+* Roguelike Zone Generation experiments
+	- Decide how zone transitions should work, and under what conditions
+		- Warp gates?
+		- Completing objectives?
+		- Literally leaving the map?
+	- Create a couple of interesting random zone/scenario generation algorithms
+		- Think more about what the goal of the zones should be
+	- Consider what the endgame is going to be like.  Is this semi-random scenarios leading to a known fixed endgame?  Or pure random throughout?  With what constraints?
+
+* Permadeath and Implications
+	- Add ability to record what a user did through their ships' lifetime
+		- kills
+		- objectives completed
+		- items found
+		- components installed
+		- damage taken
+		- ship composition on death
+		- Super detailed?  Data about maps generated?  Enough data to construct a full replay?
+			- LEARN: How could a full replay capability be constructed without huge size, and reliably?  Will determinism be possible to prevent deviation?
+	- "Points" system for actions taken in the game session?
+	- Naming your ship and pilot
+	- Choosing and customizing your Ship and Iconography/colors if any
+	- Add ability to share with friends
+	- Investigate/consider what would make for an interesting leaderboard?
+		- "Play another player's game session"?  (spin up their random seeds and see how long they survive the scenario)
+	
+* Leveling Up and its Effect
+	- Consider design
+		- Skill points you can allocate to abilities?  Upgrading installed components?  Both?
+	- AI ramp up to go with it?  Or do we make it harder by adding more/new enemies rather than scaling up old ones?
+	
+* Iterating on Ship Designs
+	- Evaluate existing ships made to this point and how to improve them
+	- Give a pass on whether design of new ships and parts could be simplified
+		- Could we make it so easy that I could build a simple editor with enough time for end users?
+	- Create as many ships as you can bear, with their own:
+		- Hard points
+		- Design flaws and benefits
+		- Base speed and handling
+		- Damage threshold
+		- Unique look
+	
+* Nice to Have: Scenario Creation Mode/Editor
+	- Alternative to random scenarios
+	- Create a simple editor that would let people edit campaigns in the spirit of the old X-Wing community scenario editor
+		- Actions should be able to be set to happen based on triggers:
+			- At onset of scenario
+			- Player reaching some area of the map
+			- Player accomplishing an objective
+			- A certain amount of time passing
+		- Spawning in groups of ships/entities
+			- Set position and orientation XYZ
+			- Set terms of engagement
+			- Set destination waypoints if applicable
+			- Set explicit actions they should take based on triggers
+				- Warp away
+				- Dock with a space station
+				- ???
+		- Set objectives
+			- Destroy [X group on map]
+			- X previous objective completed
+			- Group X loaded cargo
+			- Group X warped way
+			- Group X docked with space station
+			- Survive for X minutes
+		- Create simple player feedback mechanisms (even just the ability to trigger text to be shown)
+	- Bonus objective: See instant feedback in game?
+		- This could be crazy with chained triggers
+
+* General Feature Polish Sprint	
+	- Title screen
+	- ??? Level select screen
+	- ?? Nebula
+		- Other visual range decreasing effects?
+	- ?? Planets?
