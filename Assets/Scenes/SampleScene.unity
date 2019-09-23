@@ -260,7 +260,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TargetObject: {fileID: 1093656826}
-  ShowDebug: 0
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -660,7 +659,7 @@ PrefabInstance:
     - target: {fileID: 8784037621144575293, guid: 89e62bf021e3a394ca845bc25dc140be,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.96383995
+      value: -0.99709976
       objectReference: {fileID: 0}
     - target: {fileID: 8784037621144575293, guid: 89e62bf021e3a394ca845bc25dc140be,
         type: 3}
@@ -675,7 +674,7 @@ PrefabInstance:
     - target: {fileID: 8784037621144575293, guid: 89e62bf021e3a394ca845bc25dc140be,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.2664821
+      value: 0.076106
       objectReference: {fileID: 0}
     - target: {fileID: 8784037621144575293, guid: 89e62bf021e3a394ca845bc25dc140be,
         type: 3}
@@ -685,7 +684,7 @@ PrefabInstance:
     - target: {fileID: 8784037621144575293, guid: 89e62bf021e3a394ca845bc25dc140be,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -149.09
+      value: -171.27
       objectReference: {fileID: 0}
     - target: {fileID: 8784037621144575293, guid: 89e62bf021e3a394ca845bc25dc140be,
         type: 3}
@@ -695,6 +694,21 @@ PrefabInstance:
     - target: {fileID: 8784037621144575293, guid: 89e62bf021e3a394ca845bc25dc140be,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4691941030127074252, guid: 89e62bf021e3a394ca845bc25dc140be,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4691941030127074252, guid: 89e62bf021e3a394ca845bc25dc140be,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4691941030127074252, guid: 89e62bf021e3a394ca845bc25dc140be,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1327758100257826603, guid: 89e62bf021e3a394ca845bc25dc140be,

@@ -43,10 +43,15 @@ namespace Assets.Scripts.Components.AI
 			if (_targetComponent != null)
 			{
 				// First, we have to figure out if we need to roll.  If we do, twist until we get into a position where the Pitch can focus on the enemy.
+				// FLIMSY: Targeting component assumes a lot about orientation.  Have to use the raw TargetObject transform here since the multi part orientation's firing solution will *definitely*
+				// have a different orientation than the parent object.
 				var vectorRollToTarget = _targetComponent.TargetObject.transform.position - this.RollComponent.transform.position;
 
+				// Get pointer to target in local coordinates for the roller.
 				var vectorRollToTargetLocal = this.RollComponent.transform.InverseTransformVector(vectorRollToTarget);
+				// Don't take any "forward" component, only left/right and up/down
 				vectorRollToTargetLocal.z = 0;
+				// Turn it back into world coordinates: this should result in a vector that will give us an angle to roll left/right
 				_worldVectorRealRoll = this.RollComponent.transform.TransformVector(vectorRollToTargetLocal);
 
 				var rollLookRotationTarget = Quaternion.LookRotation(this.RollComponent.forward, _worldVectorRealRoll);
@@ -69,10 +74,6 @@ namespace Assets.Scripts.Components.AI
 				{
 					// Start the roll rotation toward the target.
 					this.RollComponent.rotation = Quaternion.RotateTowards(this.RollComponent.rotation, rollLookRotationTarget, this.DegreesTurnPerSecond * Time.fixedDeltaTime);
-
-					// Set up the pitch component to have the same rotation as the roll.
-					// (FLIMY ASSUMPTION: base object roll and pitch components are on same Z axis - think about how we can fix that later)
-					this.PitchComponent.rotation = this.RollComponent.rotation;
 				}
 			}
 		}
@@ -80,16 +81,25 @@ namespace Assets.Scripts.Components.AI
 		public void OnDrawGizmosSelected()
 		{
 			// Roll vector
-			Gizmos.color = Color.red;
-			Gizmos.DrawLine(this.RollComponent.position, _worldVectorRealRoll);
+			if (_worldVectorRealRoll != null)
+			{
+				Gizmos.color = Color.red;
+				Gizmos.DrawLine(this.RollComponent.position, _worldVectorRealRoll);
+			}
 
 			// Pitch vector
-			Gizmos.color = Color.blue;
-			Gizmos.DrawLine(this.PitchComponent.transform.position, _worldVectorRealPitch);
+			if (_worldVectorRealPitch != null)
+			{
+				Gizmos.color = Color.blue;
+				Gizmos.DrawLine(this.PitchComponent.transform.position, _worldVectorRealPitch);
+			}
 
 			// Source to target
-			Gizmos.color = Color.yellow;
-			Gizmos.DrawLine(this.PitchComponent.position, _targetComponent.TargetObject.transform.position);
+			if (_targetComponent != null)
+			{
+				Gizmos.color = Color.yellow;
+				Gizmos.DrawLine(this.PitchComponent.position, _targetComponent.TargetObject.transform.position);
+			}
 		}
 	}
 }
