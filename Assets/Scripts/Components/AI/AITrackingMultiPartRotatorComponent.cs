@@ -64,9 +64,6 @@ namespace Assets.Scripts.Components.AI
 					// Slowly pivot to look towards the desired pitch.
 					var pitchLookRotationTarget = Quaternion.LookRotation(worldVectorRealPitch, this.PitchComponent.up);
 					this.PitchComponent.rotation = Quaternion.RotateTowards(this.PitchComponent.rotation, pitchLookRotationTarget, this.DegreesTurnPerSecond * Time.fixedDeltaTime);
-
-					// For some reason this one works, but the RotateTowards above doesn't... hmm
-					//this.PitchComponent.rotation = Quaternion.LookRotation(worldVectorRealPitch);
 				}
 				else
 				{
