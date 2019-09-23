@@ -29,6 +29,10 @@ namespace Assets.Scripts.Components.AI
 
 		private AITargetComponent _targetComponent;
 
+		private Vector3 _worldVectorRealRoll;
+
+		private Vector3 _worldVectorRealPitch;
+
 		public void Start()
 		{
 			_targetComponent = this.GetComponent<AITargetComponent>();
@@ -43,11 +47,9 @@ namespace Assets.Scripts.Components.AI
 
 				var vectorRollToTargetLocal = this.RollComponent.transform.InverseTransformVector(vectorRollToTarget);
 				vectorRollToTargetLocal.z = 0;
-				var worldVectorRealRoll = this.RollComponent.transform.TransformVector(vectorRollToTargetLocal);
+				_worldVectorRealRoll = this.RollComponent.transform.TransformVector(vectorRollToTargetLocal);
 
-				//Debug.DrawRay(this.transform.position, worldVectorRealRoll, Color.red);
-
-				var rollLookRotationTarget = Quaternion.LookRotation(this.RollComponent.forward, worldVectorRealRoll);
+				var rollLookRotationTarget = Quaternion.LookRotation(this.RollComponent.forward, _worldVectorRealRoll);
 
 				// Once the roll is correct, move the pitch.
 				if (this.RollComponent.rotation == rollLookRotationTarget)
@@ -57,12 +59,10 @@ namespace Assets.Scripts.Components.AI
 
 					var vectorPitchToTargetLocal = this.PitchComponent.transform.InverseTransformVector(vectorPitchToTarget);
 					vectorPitchToTargetLocal.x = 0;
-					var worldVectorRealPitch = this.PitchComponent.transform.TransformVector(vectorPitchToTargetLocal);
-
-					//Debug.DrawRay(this.PitchComponent.transform.position, worldVectorRealPitch, Color.blue);
+					_worldVectorRealPitch = this.PitchComponent.transform.TransformVector(vectorPitchToTargetLocal);
 
 					// Slowly pivot to look towards the desired pitch.
-					var pitchLookRotationTarget = Quaternion.LookRotation(worldVectorRealPitch, this.PitchComponent.up);
+					var pitchLookRotationTarget = Quaternion.LookRotation(_worldVectorRealPitch, this.PitchComponent.up);
 					this.PitchComponent.rotation = Quaternion.RotateTowards(this.PitchComponent.rotation, pitchLookRotationTarget, this.DegreesTurnPerSecond * Time.fixedDeltaTime);
 				}
 				else
@@ -74,9 +74,22 @@ namespace Assets.Scripts.Components.AI
 					// (FLIMY ASSUMPTION: base object roll and pitch components are on same Z axis - think about how we can fix that later)
 					this.PitchComponent.rotation = this.RollComponent.rotation;
 				}
-
-				//Debug.DrawLine(this.PitchComponent.position, _targetComponent.TargetObject.transform.position, Color.yellow);
 			}
+		}
+
+		public void OnDrawGizmosSelected()
+		{
+			// Roll vector
+			Gizmos.color = Color.red;
+			Gizmos.DrawLine(this.RollComponent.position, _worldVectorRealRoll);
+
+			// Pitch vector
+			Gizmos.color = Color.blue;
+			Gizmos.DrawLine(this.PitchComponent.transform.position, _worldVectorRealPitch);
+
+			// Source to target
+			Gizmos.color = Color.yellow;
+			Gizmos.DrawLine(this.PitchComponent.position, _targetComponent.TargetObject.transform.position);
 		}
 	}
 }

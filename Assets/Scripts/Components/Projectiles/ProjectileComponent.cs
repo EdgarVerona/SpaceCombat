@@ -31,12 +31,10 @@ namespace Assets.Scripts.Components.Projectiles
 			// If its lifetime has elapsed, get rid of it.
 			if ((_timeCreated + this.LifetimeInSeconds) <= Time.time)
 			{
-				Debug.Log("Projectile dead");
 				GameObjectPoolManager.Instance.RecycleInstance(this);
 			}
 			else
 			{
-				Debug.Log("Projectile moving");
 				// Move it forward in space.
 				this.transform.position += this.transform.forward * this.Velocity * Time.fixedDeltaTime;
 			}

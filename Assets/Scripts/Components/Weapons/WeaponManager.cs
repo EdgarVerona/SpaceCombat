@@ -42,8 +42,6 @@ namespace Assets.Scripts.Components.Weapons
 					{
 						var angleToTarget = Quaternion.Angle(currentWeapon.GetLaunchRotation(), Quaternion.LookRotation(vectorToTarget, currentWeapon.GetLaunchTransform().up));
 
-						Debug.DrawRay(currentWeapon.GetLaunchPosition(), vectorToTarget, Color.magenta);
-
 						if (angleToTarget <= minimumAttackAngle)
 						{
 							// If the current weapon fires, cycle to the next one.

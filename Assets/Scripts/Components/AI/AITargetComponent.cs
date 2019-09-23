@@ -10,7 +10,6 @@ namespace Assets.Scripts.Components.AI
 	public class AITargetComponent : MonoBehaviour
 	{
 		public GameObject TargetObject;
-		public bool ShowDebug = false;
 
 		private Vector3 _vectorToTarget = Vector3.zero;
 		private Quaternion _rotationToTarget = Quaternion.identity;
@@ -25,11 +24,12 @@ namespace Assets.Scripts.Components.AI
 			_vectorToTarget = this.TargetObject.transform.position - this.transform.position;
 
 			_rotationToTarget = Quaternion.LookRotation(_vectorToTarget);
+		}
 
-			if (ShowDebug)
-			{
-				Debug.DrawRay(this.transform.position, _vectorToTarget, Color.cyan);
-			}
+		public void OnDrawGizmosSelected()
+		{
+			Gizmos.color = Color.cyan;
+			Gizmos.DrawRay(this.transform.position, _vectorToTarget);
 		}
 
 		public Vector3 GetVectorToTarget()
