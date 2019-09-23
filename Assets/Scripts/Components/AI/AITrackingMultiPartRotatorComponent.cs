@@ -45,7 +45,7 @@ namespace Assets.Scripts.Components.AI
 				vectorRollToTargetLocal.z = 0;
 				var worldVectorRealRoll = this.RollComponent.transform.TransformVector(vectorRollToTargetLocal);
 
-				Debug.DrawRay(this.transform.position, worldVectorRealRoll, Color.red);
+				//Debug.DrawRay(this.transform.position, worldVectorRealRoll, Color.red);
 
 				var rollLookRotationTarget = Quaternion.LookRotation(this.RollComponent.forward, worldVectorRealRoll);
 
@@ -59,7 +59,7 @@ namespace Assets.Scripts.Components.AI
 					vectorPitchToTargetLocal.x = 0;
 					var worldVectorRealPitch = this.PitchComponent.transform.TransformVector(vectorPitchToTargetLocal);
 
-					Debug.DrawRay(this.PitchComponent.transform.position, worldVectorRealPitch, Color.blue);
+					//Debug.DrawRay(this.PitchComponent.transform.position, worldVectorRealPitch, Color.blue);
 
 					// Slowly pivot to look towards the desired pitch.
 					var pitchLookRotationTarget = Quaternion.LookRotation(worldVectorRealPitch, this.PitchComponent.up);

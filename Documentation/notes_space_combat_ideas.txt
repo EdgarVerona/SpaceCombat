@@ -14,8 +14,10 @@
 			- Having to keep the Prefab everywhere
 				- Particularly annoying when disposing, instance would need a reference to its prefab.  Could we refer to them by something else?
 	- Static Enemy, gun platform
-		- LEARN: Any Unity AI built-in systems
-		- LEARN: Pivoting sub-components, restricting pivot based on geometry
+		X LEARN: Pivoting sub-components, restricting pivot based on geometry
+		? LEARN: Any Unity AI built-in systems
+		- Add shooting
+		- Fix it so it doesn't reset its aim when it moves
 	- Static Enemy, starbase
 		- LEARN: Driving multiple gun platforms on a single parent entity
 			- Or perhaps let them remain independent?

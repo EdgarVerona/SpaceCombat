@@ -32,13 +32,16 @@ namespace Assets.Scripts.Components.AI
 			if (_targetComponent.TargetObject != null)
 			{
 				// If we're saying we can only rotate 25 degrees in a second, let's use that to interpret how far we should move.
-				_distanceToPlayer = _targetComponent.GetVectorToTarget().magnitude;
-				_angleToTarget = Quaternion.Angle(this.transform.rotation, _targetComponent.GetRotationToTarget());
+				//_distanceToPlayer = _targetComponent.GetVectorToTarget().magnitude;
+				//_angleToTarget = Quaternion.Angle(this.transform.rotation, _targetComponent.GetRotationToTarget());
 
+				_weaponManager.FireIfTargetable(_targetComponent.TargetObject, MinimumAttackAngle, MinimumDistanceToAttack);
+				/*
 				if (this.ShouldFire())
 				{
 					_weaponManager.FireWeapon();
 				}
+				*/
 			}
 		}
 

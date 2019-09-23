@@ -18,13 +18,44 @@ namespace Assets.Scripts.Components.Weapons
 		{
 			this._weapons = new List<WeaponComponent>();
 
-			foreach (Transform child in parentObject.transform)
-			{
-				var weaponComponent = child.GetComponent<WeaponComponent>();
+			var weaponComponents = parentObject.GetComponentsInChildren<WeaponComponent>();
 
-				if (weaponComponent != null)
+			if (weaponComponents != null)
+			{
+				this._weapons.AddRange(weaponComponents);
+			}
+		}
+
+		public void FireIfTargetable(GameObject targetObject, float minimumAttackAngle, float minimumDistanceToAttack)
+		{
+			if (_weapons.Any())
+			{
+				for (int index = 0; index < _weapons.Count; index++)
 				{
-					this._weapons.Add(weaponComponent);
+					var currentWeapon = _weapons[_weaponFireIndex];
+
+					var vectorToTarget = targetObject.transform.position - currentWeapon.transform.position;
+
+					var distanceToPlayer = vectorToTarget.magnitude;
+
+					if (distanceToPlayer <= minimumDistanceToAttack)
+					{
+						var angleToTarget = Quaternion.Angle(currentWeapon.transform.rotation, Quaternion.LookRotation(vectorToTarget, currentWeapon.transform.up));
+
+						Debug.DrawRay(currentWeapon.transform.position, vectorToTarget, Color.magenta);
+
+						if (angleToTarget <= minimumAttackAngle)
+						{
+							// If the current weapon fires, cycle to the next one.
+							if (_weapons[_weaponFireIndex].TryFire())
+							{
+								break;
+							}
+						}
+					}
+
+					// Move on to the next weapon to try.
+					_weaponFireIndex = (_weaponFireIndex + 1) % _weapons.Count;
 				}
 			}
 		}

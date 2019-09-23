@@ -38,7 +38,7 @@ namespace Assets.Scripts.Components.Projectiles
 			{
 				Debug.Log("Projectile moving");
 				// Move it forward in space.
-				this.transform.position += this.transform.up * this.Velocity * Time.fixedDeltaTime;
+				this.transform.position += this.transform.forward * this.Velocity * Time.fixedDeltaTime;
 			}
 		}
 	}
