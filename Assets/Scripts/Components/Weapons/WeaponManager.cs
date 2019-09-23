@@ -34,15 +34,15 @@ namespace Assets.Scripts.Components.Weapons
 				{
 					var currentWeapon = _weapons[_weaponFireIndex];
 
-					var vectorToTarget = targetObject.transform.position - currentWeapon.transform.position;
+					var vectorToTarget = targetObject.transform.position - currentWeapon.GetLaunchPosition();
 
 					var distanceToPlayer = vectorToTarget.magnitude;
 
 					if (distanceToPlayer <= minimumDistanceToAttack)
 					{
-						var angleToTarget = Quaternion.Angle(currentWeapon.transform.rotation, Quaternion.LookRotation(vectorToTarget, currentWeapon.transform.up));
+						var angleToTarget = Quaternion.Angle(currentWeapon.GetLaunchRotation(), Quaternion.LookRotation(vectorToTarget, currentWeapon.GetLaunchTransform().up));
 
-						Debug.DrawRay(currentWeapon.transform.position, vectorToTarget, Color.magenta);
+						Debug.DrawRay(currentWeapon.GetLaunchPosition(), vectorToTarget, Color.magenta);
 
 						if (angleToTarget <= minimumAttackAngle)
 						{

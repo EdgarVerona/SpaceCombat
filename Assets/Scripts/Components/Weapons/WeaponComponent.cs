@@ -39,5 +39,20 @@ namespace Assets.Scripts.Components.Weapons
 
 			return canFire;
 		}
+
+		public Transform GetLaunchTransform()
+		{
+			return this.LaunchPoint.transform;
+		}
+
+		public Vector3 GetLaunchPosition()
+		{
+			return this.LaunchPoint.transform.position;
+		}
+
+		public Quaternion GetLaunchRotation()
+		{
+			return this.LaunchPoint.transform.rotation;
+		}
 	}
 }
