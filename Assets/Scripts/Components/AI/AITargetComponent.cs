@@ -24,7 +24,7 @@ namespace Assets.Scripts.Components.AI
 		{
 			_vectorToTarget = this.TargetObject.transform.position - this.transform.position;
 
-			_rotationToTarget = Quaternion.LookRotation(_vectorToTarget, Vector3.up);
+			_rotationToTarget = Quaternion.LookRotation(_vectorToTarget);
 
 			if (ShowDebug)
 			{

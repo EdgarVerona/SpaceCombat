@@ -8,7 +8,7 @@ using UnityEngine;
 namespace Assets.Scripts.Components.AI
 {
 	[RequireComponent(typeof(AITargetComponent))]
-	public class AITrackingComponent : MonoBehaviour
+	public class AITrackingAllAxisComponent : MonoBehaviour
 	{
 		public float DegreesTurnPerSecond = 25.0f;
 		
