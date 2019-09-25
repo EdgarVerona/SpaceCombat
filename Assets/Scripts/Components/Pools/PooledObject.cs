@@ -8,7 +8,10 @@ using UnityEngine;
 namespace Assets.Scripts.Components.Pools
 {
 	/// <summary>
-	/// For a prefab object to be pooled, it must have this behavior.
+	/// For a prefab object to be pooled, it must have this behavior.  This data
+	/// tells the pooling how to handle objects of this type.
+	/// 
+	/// I get the feeling that there's a better way to do this than to use a behaviour.
 	/// </summary>
 	public class PooledObject : MonoBehaviour
 	{

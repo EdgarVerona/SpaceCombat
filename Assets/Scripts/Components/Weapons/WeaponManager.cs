@@ -8,6 +8,11 @@ using UnityEngine;
 
 namespace Assets.Scripts.Components.Weapons
 {
+	/// <summary>
+	/// $NOTE This weapon manager is the start of an idea I had to provide X-wing like weapon grouping and linking,
+	/// but I'm already starting to have my doubts about it.  I'm going to roll with it for now, but should re-assess
+	/// later if I want to use a different pattern as I start to actually implement grouping/linking.
+	/// </summary>
 	public class WeaponManager
 	{
 		private int _weaponFireIndex = 0;
@@ -16,13 +21,13 @@ namespace Assets.Scripts.Components.Weapons
 
 		public WeaponManager(GameObject parentObject)
 		{
-			this._weapons = new List<WeaponComponent>();
+			_weapons = new List<WeaponComponent>();
 
 			var weaponComponents = parentObject.GetComponentsInChildren<WeaponComponent>();
 
 			if (weaponComponents != null)
 			{
-				this._weapons.AddRange(weaponComponents);
+				_weapons.AddRange(weaponComponents);
 			}
 		}
 

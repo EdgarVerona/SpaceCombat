@@ -25,52 +25,52 @@ namespace Assets.Scripts.Components.Controls
 
 		void FixedUpdate()
 		{
-			if (this._controlMapping.IsAccelerating())
+			if (_controlMapping.IsAccelerating())
 			{
 				Debug.Log("Accelerate");
-				_rigidBodyToControl.transform.position += this.transform.forward * this._baseShip.AccelerationRate * Time.fixedDeltaTime;
+				_rigidBodyToControl.transform.position += this.transform.forward * _baseShip.AccelerationRate * Time.fixedDeltaTime;
 			}
-			if (this._controlMapping.IsDecelerating())
+			if (_controlMapping.IsDecelerating())
 			{
 				Debug.Log("Decelerate");
-				_rigidBodyToControl.transform.position -= this.transform.forward * this._baseShip.AccelerationRate * Time.fixedDeltaTime;
+				_rigidBodyToControl.transform.position -= this.transform.forward * _baseShip.AccelerationRate * Time.fixedDeltaTime;
 			}
-			if (this._controlMapping.IsDown())
+			if (_controlMapping.IsDown())
 			{
 				Debug.Log("Down");
-				_rigidBodyToControl.transform.RotateAround(this.transform.position, this.transform.right, -this._baseShip.PitchRate * Time.fixedDeltaTime);
+				_rigidBodyToControl.transform.RotateAround(this.transform.position, this.transform.right, -_baseShip.PitchRate * Time.fixedDeltaTime);
 			}
-			if (this._controlMapping.IsUp())
+			if (_controlMapping.IsUp())
 			{
 				Debug.Log("Up");
-				_rigidBodyToControl.transform.RotateAround(this.transform.position, this.transform.right, this._baseShip.PitchRate * Time.fixedDeltaTime);
+				_rigidBodyToControl.transform.RotateAround(this.transform.position, this.transform.right, _baseShip.PitchRate * Time.fixedDeltaTime);
 			}
-			if (this._controlMapping.IsLeft())
+			if (_controlMapping.IsLeft())
 			{
 				Debug.Log("Left");
-				_rigidBodyToControl.transform.RotateAround(this.transform.position, this.transform.up, -this._baseShip.TurnRate * Time.fixedDeltaTime);
+				_rigidBodyToControl.transform.RotateAround(this.transform.position, this.transform.up, -_baseShip.TurnRate * Time.fixedDeltaTime);
 			}
-			if (this._controlMapping.IsRight())
+			if (_controlMapping.IsRight())
 			{
 				Debug.Log("Right");
-				_rigidBodyToControl.transform.RotateAround(this.transform.position, this.transform.up, this._baseShip.TurnRate * Time.fixedDeltaTime);
+				_rigidBodyToControl.transform.RotateAround(this.transform.position, this.transform.up, _baseShip.TurnRate * Time.fixedDeltaTime);
 			}
-			if (this._controlMapping.IsTwistLeft())
+			if (_controlMapping.IsTwistLeft())
 			{
 				Debug.Log("TwistLeft");
-				_rigidBodyToControl.transform.RotateAround(this.transform.position, this.transform.forward, -this._baseShip.TwistRate * Time.fixedDeltaTime);
+				_rigidBodyToControl.transform.RotateAround(this.transform.position, this.transform.forward, -_baseShip.TwistRate * Time.fixedDeltaTime);
 			}
-			if (this._controlMapping.IsTwistRight())
+			if (_controlMapping.IsTwistRight())
 			{
 				Debug.Log("TwistRight");
-				_rigidBodyToControl.transform.RotateAround(this.transform.position, this.transform.forward, this._baseShip.TwistRate * Time.fixedDeltaTime);
+				_rigidBodyToControl.transform.RotateAround(this.transform.position, this.transform.forward, _baseShip.TwistRate * Time.fixedDeltaTime);
 			}
 
-			if (this._controlMapping.IsFirePrimary())
+			if (_controlMapping.IsFirePrimary())
 			{
 				Debug.Log("Fire weapon!");
 
-				this._baseShip.FireWeapon();
+				_baseShip.FireWeapon();
 			}
 		}
 	}

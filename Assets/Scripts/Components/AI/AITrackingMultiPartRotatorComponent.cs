@@ -45,6 +45,7 @@ namespace Assets.Scripts.Components.AI
 				// First, we have to figure out if we need to roll.  If we do, twist until we get into a position where the Pitch can focus on the enemy.
 				// FLIMSY: Targeting component assumes a lot about orientation.  Have to use the raw TargetObject transform here since the multi part orientation's firing solution will *definitely*
 				// have a different orientation than the parent object.
+				/// $NOTE This is where the AITargetComponent feels like it starts to break down in usefulness, when I have to reach out to the TargetObject's properties directly anyways.
 				var vectorRollToTarget = _targetComponent.TargetObject.transform.position - this.RollComponent.transform.position;
 
 				// Get pointer to target in local coordinates for the roller.

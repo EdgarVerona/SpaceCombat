@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace Assets.Scripts.Components.Controls
 {
+	/// <summary>
+	/// $NOTE - At some point, need to re-evaluate what good default control mappings should be.
+	/// </summary>
 	public class PlayerControlMapping : BaseShipControlMapping
 	{
 		public KeyCode AccelerateKey = KeyCode.R;

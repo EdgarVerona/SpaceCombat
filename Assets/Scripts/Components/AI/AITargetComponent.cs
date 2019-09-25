@@ -7,6 +7,12 @@ using UnityEngine;
 
 namespace Assets.Scripts.Components.AI
 {
+	/// <summary>
+	/// I thought this would be a convenient component for standardizing the logic for "targeting" something, but I have
+	/// my doubts now that I have objects whose shooting orientation doesn't match their targeting orientation.
+	/// 
+	/// $NOTE Need to rethink this.
+	/// </summary>
 	public class AITargetComponent : MonoBehaviour
 	{
 		public GameObject TargetObject;

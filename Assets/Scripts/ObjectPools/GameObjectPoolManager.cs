@@ -9,6 +9,9 @@ using UnityEngine;
 
 namespace Assets.ObjectPools
 {
+	/// <summary>
+	/// A singleton that controls the allocation of Game Objects from pools, allowing the pools to be shared between components.
+	/// </summary>
 	public class GameObjectPoolManager
 	{
 		private Dictionary<string, GameObjectPool> _pools;

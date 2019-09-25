@@ -9,6 +9,16 @@ using UnityEngine;
 
 namespace Assets.Scripts.Components.Projectiles
 {
+	/// <summary>
+	/// $NOTE - This is more of a "straight-firing projectile" component.
+	/// Consider if Damage should be separated from this and pulled into its own concept: perhaps projectiles might not cause
+	/// damage?  Or I can share the Damage concept between multiple types of projectiles.
+	/// 
+	/// Also, should damage be associated with a weapon or the projectile?  Another good reason to split it, perhaps either
+	/// might apply in some circumstances.
+	/// 
+	/// Also, ProjectileComponent could be a reasonable base class for other types of projectiles than a "fire straight forward" variety.
+	/// </summary>
 	public class ProjectileComponent : PooledObject
 	{
 		public float Velocity;

@@ -8,6 +8,9 @@ using UnityEngine;
 
 namespace Assets.Components.Ships
 {
+	/// <summary>
+	/// All "Ships" that move in space should have these common properties.
+	/// </summary>
 	public class BaseShip : MonoBehaviour
 	{
 		public float AccelerationRate;

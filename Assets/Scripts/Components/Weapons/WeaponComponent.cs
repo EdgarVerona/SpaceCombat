@@ -10,6 +10,15 @@ using UnityEngine;
 
 namespace Assets.Scripts.Components.Weapons
 {
+	/// <summary>
+	/// Controls the association of a piece of geometry that is considered a projectile-firing weapon
+	/// with the point at which the projectiles should be launched and the projectile being launched.
+	/// 
+	/// Has some basic properties about the weapon, and controls when it can fire.
+	/// 
+	/// ASSUMES that the weapon will fire out of the local "forward" direction (blue arrow) of the LaunchPoint,
+	/// and that the projectile will also be fired facing its local "forward" direction.
+	/// </summary>
 	public class WeaponComponent : MonoBehaviour
 	{
 		public ProjectileComponent ProjectilePrefab;

@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// $NOTE - At some point, need to make a variant of this that feels more "loose" - it doesn't feel good to have the ship absolutely fixed in a position on the screen even
+/// when rolling/pitching.
+/// </summary>
 public class FollowCamera : MonoBehaviour
 {
 	public Transform Target;

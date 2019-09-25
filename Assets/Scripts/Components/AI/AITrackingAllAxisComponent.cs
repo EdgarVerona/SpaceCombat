@@ -7,6 +7,12 @@ using UnityEngine;
 
 namespace Assets.Scripts.Components.AI
 {
+	/// <summary>
+	/// For use on AI Entities that can freely rotate in all 3 axis, like ships.
+	/// 
+	/// $NOTE - When I get more time, I'd like to change the tracking for ships to reflect the ways in which a ship would actually move, rather than just freely being able to turn.
+	/// Or perhaps that *is* valid?  Unsure, will need to see how it feels.
+	/// </summary>
 	[RequireComponent(typeof(AITargetComponent))]
 	public class AITrackingAllAxisComponent : MonoBehaviour
 	{

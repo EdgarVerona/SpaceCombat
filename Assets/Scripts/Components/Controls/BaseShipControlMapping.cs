@@ -7,6 +7,14 @@ using UnityEngine;
 
 namespace Assets.Scripts.Components.Controls
 {
+	/// <summary>
+	/// $NOTE - I regret this already.  Originally I was picturing that AI and the Player would
+	/// have to use the same "controls" for their actions, and the player would have mapping to keyboard
+	/// while the AI would have mapping via AI states.  That made AI more complicated than it needed to be
+	/// for basic motion.  I need to consider whether this is actually still providing any benefit.
+	/// 
+	/// Perhaps for automated tests?
+	/// </summary>
 	public abstract class BaseShipControlMapping : MonoBehaviour
 	{
 		public abstract bool IsAccelerating();

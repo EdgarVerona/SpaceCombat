@@ -8,6 +8,9 @@ using UnityEngine;
 
 namespace Assets.ObjectPools
 {
+	/// <summary>
+	/// First pass at a pool for reusing game objects.  Might be enough for my needs, we'll see.
+	/// </summary>
 	public class GameObjectPool
 	{
 		private Queue<PooledObject> _objects;

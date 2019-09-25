@@ -7,6 +7,10 @@ using UnityEngine;
 
 namespace Assets.Scripts.Components.Clamping
 {
+	/// <summary>
+	/// $NOTE - This is the start of an attempt to force an object to have a maximum amount that it'll rotate in a given direction.
+	/// Doesn't work yet, need to look into that next to prevent turrets from rotating into themselves (for example).
+	/// </summary>
 	public class RotationClampingComponent : MonoBehaviour
 	{
 		public float XRotationMin = -360.0f;

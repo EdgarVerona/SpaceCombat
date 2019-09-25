@@ -16,16 +16,27 @@
 	- Static Enemy, gun platform
 		X LEARN: Pivoting sub-components, restricting pivot based on geometry
 		? LEARN: Any Unity AI built-in systems
-		- Add shooting
-		- Fix it so it doesn't reset its aim when it moves
+			- Haven't seen any yet, need to look around
+		X Add shooting
+			- Fixed many areas to get this to work properly, see Github checkins.
+		X Fix it so it doesn't reset its aim when it moves
+			X SOLUTION: Child items needed to be parented by an invisible (and thus non-scaled) parent that itself did the initial rotation.
+				- This allows the parent-child relationship to rotate properly without having to do any manual math!
+		- Prevent gun platform from being able to rotate into itself
 	- Static Enemy, starbase
 		- LEARN: Driving multiple gun platforms on a single parent entity
 			- Or perhaps let them remain independent?
+		- Preventing AI from targeting units that it can't see (such as gun platform that are facing away from the player ship)
+		- Add a placeholder ability for units to choose their own targets instead of it being chosen at design time
+			- Consider replacement of AITargetComponent, it's becoming less useful than I thought it would be
+			- Don't build the full objective/faction system yet, just something dumb enough to keep moving.  That can come later.
 	- Enemy, first pass prototype starfighter
 		- LEARN: Unity AI Pathfinding, constraining to the way that actual starfighters can turn and shoot?
 		- LEARN: What kind of strategies can we add to these starfighters?
+		- Just enough to get them dogfighting in a simple way - avoid building out objective/faction system too early
 	- Obstacle, asteroid
 	- Hitpoints and destruction
+		- Avoid building per-part damage/destruction yet, need to think about it more
 	- Demo level, with examples of all of the above
 	
 * Basic scene creation ideas
@@ -126,6 +137,25 @@
 	- Create a couple of interesting random zone/scenario generation algorithms
 		- Think more about what the goal of the zones should be
 	- Consider what the endgame is going to be like.  Is this semi-random scenarios leading to a known fixed endgame?  Or pure random throughout?  With what constraints?
+	- Need to think about ethical implications of a Roguelike/endlessly replayable random game.
+		- Is that the kind of game that I *want* to make?
+			- I want to experiment with how it's made, but is it something a person ought to offer to other people?
+			- Compelling fixed/finite experience vs. unbounded experience
+		- Better to make a game that is fixed and just "done" once you've finished it?
+		- Alternative: let people make campaigns of their own with provided tools.  Lets people choose to create discrete experiences to extend fun for others while still making each experience discrete/finite.
+		- Make something that a person can walk away from, satisfied and with a feeling that the game is "done" even if content within the game is randomly generated.
+			- Examine roguelikes that have done this for you: how?
+				- Rogue Legacy: Over multiple playthroughs, built up to a real ending.  Felt truly "done", could walk away.
+					- In a way, each playthrough became a "checkpoint" that could get you closer to the real ending
+				- ADOM: Eventually had an ending if you could reach it.  Fixed overworld + general "plotline" meant that eventually the experience felt exhausted and could walk away.
+					- Though even this felt like it reached compulsion due to difficulty in being able to actually reach the end.  Starting over from scratch in such a long game created its own cycle of not being able to walk away.  Experiences along the way in the attempt were varied enough that it compelled the next attempt - which was fun, but also somewhat maddening when I finally crossed over to the point of "just wanting it to be over".
+			- Examine roguelikes that *haven't* ever felt done - what were my interactions with them?  Where did I feel joy vs. compulsion?  What can we avoid to not have it turn into compulsion?
+				- Diablo (as much as you could call it a roguelike)?  Had a fixed plotline, but the "Seasons" they created brought a sensation that you were never really done "for good".
+			- Takeaways:
+				- Could have random scenarios/encounters, but plot and general direction should be fixed
+				- Have a true ending at which point a choice to replay is with the understanding that the macro-level game won't change, just encounters within it
+				- Discourage mechanics that would bring someone back to play after it's "done" ("Resets", "Seasonal Challenges", etc...)
+				- "Checkpoints" that potentially violate roguelike aesthetic, but keep a person from having a compulsive loop due to length of time required for replay.
 
 * Permadeath and Implications
 	- Add ability to record what a user did through their ships' lifetime
